@@ -26,6 +26,35 @@ module "this" {
 No issue is creating limit on this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| helm | n/a |
+| kubernetes | n/a |
+| local | n/a |
+| null | n/a |
+| template | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| acme\_server | Full URI of the certificate issuing server | `string` | `"https://acme-staging-v02.api.letsencrypt.org/directory"` | no |
+| all\_enabled | Bool to enable all services | `bool` | `true` | no |
+| cert\_manager\_enabled | Bool to enable external cert-manager | `bool` | `true` | no |
+| cert\_manager\_issuer\_secret\_name | k8s secret name for this issuer | `string` | `"letsencrypt-issuer-account-key"` | no |
+| issuer\_name | k8s resource name for your certificate issuer (e.g. letsencrypt) | `string` | `"letsencrypt"` | no |
+| kubeconfig | The base64-encoded kubeconfig file contents for the cluster to apply CRDs to | `string` | `""` | no |
+| user\_email | Email address of user to be notifed by certificate issuer about expiry, etc. | `string` | `""` | no |
+
+## Outputs
+
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

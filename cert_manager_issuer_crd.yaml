@@ -1,0 +1,14 @@
+apiVersion: "cert-manager.io/v1alpha2"
+kind: "ClusterIssuer"
+metadata:
+  name: ${issuer_name}
+spec:
+  acme:
+    email: ${user_email}
+    server: ${acme_server}
+    privateKeySecretRef:
+      name: ${secret_name}
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
