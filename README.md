@@ -1,7 +1,7 @@
 # terraform-k8s-base-config
 
-[![open-issues](https://img.shields.io/github/issues-raw/shinyfoil/terraform-k8s-base-config?style=for-the-badge)](https://github.com/shinyfoil/terraform-k8s-base-config/issues)
-[![open-pr](https://img.shields.io/github/issues-pr-raw/shinyfoil/terraform-k8s-base-config?style=for-the-badge)](https://github.com/shinyfoil/terraform-k8s-base-config/pulls)
+[![open-issues](https://img.shields.io/github/issues-raw/insight-infrastructure/terraform-k8s-base-config?style=for-the-badge)](https://github.com/shinyfoil/terraform-k8s-base-config/issues)
+[![open-pr](https://img.shields.io/github/issues-pr-raw/insight-infrastructure/terraform-k8s-base-config?style=for-the-badge)](https://github.com/shinyfoil/terraform-k8s-base-config/pulls)
 
 ## Features
 
@@ -20,7 +20,7 @@ module "this" {
 ```
 ## Examples
 
-- [defaults](https://github.com/shinyfoil/terraform-k8s-base-config/tree/master/examples/defaults)
+- [defaults](https://github.com/insight-infrastructure/terraform-k8s-base-config/tree/master/examples/defaults)
 
 ## Known  Issues
 No issue is creating limit on this module.
@@ -82,7 +82,7 @@ To run them:
 
 ## Authors
 
-Module managed by [shinyfoil](https://github.com/shinyfoil)
+Module managed by [Richard Mah](https://github.com/shinyfoil)
 
 ## Credits
 
