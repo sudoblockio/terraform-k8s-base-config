@@ -23,6 +23,12 @@ variable "external_dns_enabled" {
   default     = true
 }
 
+variable "nginx_ingress_enabled" {
+  description = "Bool to enable nginx ingress"
+  type        = bool
+  default     = true
+}
+
 # Cert Manager
 variable "issuer_name" {
   description = "k8s resource name for your certificate issuer (e.g. letsencrypt)"
