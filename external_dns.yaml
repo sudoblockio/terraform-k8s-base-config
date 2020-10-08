@@ -1,0 +1,25 @@
+provider: ${provider}
+
+domainFilters: ["${domain}"]
+
+sources: ["ingress"]
+
+aws:
+  region: ${region}
+  zoneType: ${zone_type}
+  assumeRoleArn: ${aws_policy}
+
+azure:
+  secretName: "azure-credentials"
+  resourceGroup: ${azure_resource_group}
+
+google:
+  project: ${google_project}
+  serviceAccountSecret: "gcp-credentials"
+  serviceAccountSecretKey: "credentials"
+
+digitalocean:
+  apiToken: ${do_token}
+
+metrics:
+  enabled: true

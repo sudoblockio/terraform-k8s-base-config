@@ -17,6 +17,12 @@ variable "consul_enabled" {
   default     = true
 }
 
+variable "external_dns_enabled" {
+  description = "Bool to enable external DNS controller"
+  type        = bool
+  default     = true
+}
+
 # Cert Manager
 variable "issuer_name" {
   description = "k8s resource name for your certificate issuer (e.g. letsencrypt)"
@@ -58,4 +64,46 @@ variable "region" {
 variable "cloud_platform" {
   description = "The cloud platform where the cluster is deployed"
   type        = string
+}
+
+variable "base_domain_name" {
+  description = "The base domain name that will host the deployment. This can either be a root or a subdomain, but it should be the top-most domain to house resources."
+  type        = string
+  default     = ""
+}
+
+variable "azure_resource_group" {
+  description = "The Azure resource group"
+  type        = string
+  default     = ""
+}
+
+variable "azure_service_principal_key" {
+  description = "Contents of the JSON file for the Azure service principal"
+  type        = string
+  default     = ""
+}
+
+variable "google_project" {
+  description = "Name of GCP project"
+  type        = string
+  default     = ""
+}
+
+variable "google_service_account_key" {
+  description = "Contents of the JSON file for the GCP service account"
+  type        = string
+  default     = ""
+}
+
+variable "do_token" {
+  description = "The DO API token"
+  type        = string
+  default     = ""
+}
+
+variable "aws_worker_arn" {
+  description = "ARN for EKS worker nodes"
+  type        = string
+  default     = ""
 }
