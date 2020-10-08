@@ -48,8 +48,11 @@ No requirements.
 | all\_enabled | Bool to enable all services | `bool` | `true` | no |
 | cert\_manager\_enabled | Bool to enable external cert-manager | `bool` | `true` | no |
 | cert\_manager\_issuer\_secret\_name | k8s secret name for this issuer | `string` | `"letsencrypt-issuer-account-key"` | no |
+| cloud\_platform | The cloud platform where the cluster is deployed | `string` | n/a | yes |
+| consul\_enabled | Bool to enable consul | `bool` | `true` | no |
 | issuer\_name | k8s resource name for your certificate issuer (e.g. letsencrypt) | `string` | `"letsencrypt"` | no |
 | kubeconfig | The base64-encoded kubeconfig file contents for the cluster to apply CRDs to | `string` | `""` | no |
+| region | The region where the cluster is deployed | `string` | n/a | yes |
 | user\_email | Email address of user to be notifed by certificate issuer about expiry, etc. | `string` | `""` | no |
 
 ## Outputs

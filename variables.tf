@@ -11,6 +11,12 @@ variable "cert_manager_enabled" {
   default     = true
 }
 
+variable "consul_enabled" {
+  description = "Bool to enable consul"
+  type        = bool
+  default     = true
+}
+
 # Cert Manager
 variable "issuer_name" {
   description = "k8s resource name for your certificate issuer (e.g. letsencrypt)"
@@ -42,4 +48,14 @@ variable "kubeconfig" {
   description = "The base64-encoded kubeconfig file contents for the cluster to apply CRDs to"
   type        = string
   default     = ""
+}
+
+variable "region" {
+  description = "The region where the cluster is deployed"
+  type        = string
+}
+
+variable "cloud_platform" {
+  description = "The cloud platform where the cluster is deployed"
+  type        = string
 }
