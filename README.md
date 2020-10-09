@@ -15,7 +15,7 @@ For Terraform v0.12.0+
 
 ```hcl
 module "this" {
-  source = "github.com/shinyfoil/terraform-k8s-base-config"
+  source = "github.com/insight-infrastructure/terraform-k8s-base-config"
 }
 ```
 ## Examples
@@ -26,10 +26,6 @@ module "this" {
 No issue is creating limit on this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Requirements
-
-No requirements.
-
 ## Providers
 
 | Name | Version |
@@ -44,13 +40,13 @@ No requirements.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+|------|-------------|------|---------|:-----:|
 | acme\_server | Full URI of the certificate issuing server | `string` | `"https://acme-staging-v02.api.letsencrypt.org/directory"` | no |
 | all\_enabled | Bool to enable all services | `bool` | `true` | no |
 | aws\_worker\_arn | ARN for EKS worker nodes | `string` | `""` | no |
 | azure\_resource\_group | The Azure resource group | `string` | `""` | no |
 | azure\_service\_principal\_key | Contents of the JSON file for the Azure service principal | `string` | `""` | no |
-| base\_domain\_name | The base domain name that will host the deployment. This can either be a root or a subdomain, but it should be the top-most domain to house resources. | `string` | `""` | no |
+| base\_domain\_name | The base domain name that will host the deployment. This can either be a root or a subdomain, but it should be the top-most domain to house resources. | `string` | n/a | yes |
 | cert\_manager\_enabled | Bool to enable external cert-manager | `bool` | `true` | no |
 | cert\_manager\_issuer\_secret\_name | k8s secret name for this issuer | `string` | `"letsencrypt-issuer-account-key"` | no |
 | cloud\_platform | The cloud platform where the cluster is deployed | `string` | n/a | yes |

@@ -75,7 +75,6 @@ variable "cloud_platform" {
 variable "base_domain_name" {
   description = "The base domain name that will host the deployment. This can either be a root or a subdomain, but it should be the top-most domain to house resources."
   type        = string
-  default     = ""
 }
 
 variable "azure_resource_group" {
