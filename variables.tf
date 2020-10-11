@@ -59,7 +59,7 @@ variable "cert_manager_issuer_secret_name" {
 variable "kubeconfig" {
   description = "The base64-encoded kubeconfig file contents for the cluster to apply CRDs to"
   type        = string
-  default     = ""
+  //  default     = ""
 }
 
 variable "region" {

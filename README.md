@@ -56,7 +56,7 @@ No issue is creating limit on this module.
 | google\_project | Name of GCP project | `string` | `""` | no |
 | google\_service\_account\_key | Contents of the JSON file for the GCP service account | `string` | `""` | no |
 | issuer\_name | k8s resource name for your certificate issuer (e.g. letsencrypt) | `string` | `"letsencrypt"` | no |
-| kubeconfig | The base64-encoded kubeconfig file contents for the cluster to apply CRDs to | `string` | `""` | no |
+| kubeconfig | The base64-encoded kubeconfig file contents for the cluster to apply CRDs to | `string` | n/a | yes |
 | nginx\_ingress\_enabled | Bool to enable nginx ingress | `bool` | `true` | no |
 | region | The region where the cluster is deployed | `string` | n/a | yes |
 | user\_email | Email address of user to be notifed by certificate issuer about expiry, etc. | `string` | `""` | no |
