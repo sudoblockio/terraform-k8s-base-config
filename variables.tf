@@ -45,7 +45,7 @@ variable "user_email" {
 variable "acme_server" {
   description = "Full URI of the certificate issuing server"
   type        = string
-  default     = "https://acme-staging-v02.api.letsencrypt.org/directory"
+  default     = "https://acme-v02.api.letsencrypt.org/directory"
 }
 
 variable "cert_manager_issuer_secret_name" {

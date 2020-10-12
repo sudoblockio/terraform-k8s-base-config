@@ -26,6 +26,10 @@ module "this" {
 No issue is creating limit on this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
 ## Providers
 
 | Name | Version |
@@ -40,8 +44,8 @@ No issue is creating limit on this module.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-| acme\_server | Full URI of the certificate issuing server | `string` | `"https://acme-staging-v02.api.letsencrypt.org/directory"` | no |
+|------|-------------|------|---------|:--------:|
+| acme\_server | Full URI of the certificate issuing server | `string` | `"https://acme-v02.api.letsencrypt.org/directory"` | no |
 | all\_enabled | Bool to enable all services | `bool` | `true` | no |
 | aws\_worker\_arn | ARN for EKS worker nodes | `string` | `""` | no |
 | azure\_resource\_group | The Azure resource group | `string` | `""` | no |
