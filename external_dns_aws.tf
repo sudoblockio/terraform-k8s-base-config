@@ -1,6 +1,6 @@
 resource "aws_iam_role" "external_dns" {
   count              = var.cloud_platform == "aws" ? 1 : 0
-  name               = "external-dns"
+  name               = "${random_pet.cluster.id}-external-dns"
   assume_role_policy = data.aws_iam_policy_document.assume[0].json
 }
 

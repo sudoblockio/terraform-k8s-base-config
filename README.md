@@ -39,6 +39,7 @@ No requirements.
 | kubernetes | n/a |
 | local | n/a |
 | null | n/a |
+| random | n/a |
 | template | n/a |
 
 ## Inputs
