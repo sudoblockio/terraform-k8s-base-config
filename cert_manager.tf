@@ -9,8 +9,8 @@ data "template_file" "cert_manager" {
 resource "helm_release" "cert_manager" {
   count      = local.cert_manager_enabled ? 1 : 0
   name       = "cert-manager"
-  chart      = "jetstack/cert-manager"
-  repository = data.helm_repository.jetstack.metadata[0].name
+  chart      = "cert-manager"
+  repository = "https://charts.jetstack.io"
   namespace  = "cert-manager"
 
   values = [data.template_file.cert_manager[0].rendered]

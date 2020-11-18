@@ -16,8 +16,8 @@ data "template_file" "external_dns" {
 resource "helm_release" "external_dns" {
   count      = var.external_dns_enabled ? 1 : 0
   name       = "external-dns"
-  chart      = "bitnami/external-dns"
-  repository = data.helm_repository.bitnami.metadata[0].name
+  chart      = "external-dns"
+  repository = "https://charts.bitnami.com/bitnami"
   namespace  = "kube-system"
 
   values = [data.template_file.external_dns.rendered]
