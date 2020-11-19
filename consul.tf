@@ -8,7 +8,7 @@ data "template_file" "consul" {
 
 
 resource "helm_release" "consul" {
-  count     = var.consul_enabled ? 1 : 0
+  count     = local.consul_enabled ? 1 : 0
   name      = "consul"
   chart     = "${path.module}/charts/consul"
   namespace = "kube-system"
@@ -17,7 +17,7 @@ resource "helm_release" "consul" {
 }
 
 resource "null_resource" "kube_dns_stub" {
-  count = var.cloud_platform == "gcp" ? 1 : 0
+  count = var.cloud_platform == "gcp" && local.consul_enabled ? 1 : 0
   provisioner "local-exec" {
     command = "${path.module}/scripts/create_consul_stub_gcp.sh"
     interpreter = [
@@ -32,7 +32,7 @@ resource "null_resource" "kube_dns_stub" {
 }
 
 resource "null_resource" "core_dns_stub" {
-  count = var.cloud_platform == "aws" ? 1 : 0
+  count = var.cloud_platform == "aws" && local.consul_enabled ? 1 : 0
   provisioner "local-exec" {
     command = "${path.module}/scripts/create_consul_stub_coredns.sh"
     interpreter = [
@@ -47,7 +47,7 @@ resource "null_resource" "core_dns_stub" {
 }
 
 resource "null_resource" "core_dns_azure_stub" {
-  count = var.cloud_platform == "azure" ? 1 : 0
+  count = var.cloud_platform == "azure" && local.consul_enabled ? 1 : 0
   provisioner "local-exec" {
     command = "${path.module}/scripts/create_consul_stub_azure.sh"
     interpreter = [
