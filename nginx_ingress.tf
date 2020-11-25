@@ -1,6 +1,9 @@
 
 data "template_file" "nginx_ingress" {
-  template = yamlencode(yamldecode(file("${path.module}/nginx_ingress.yaml")))
+  template = file("${path.module}/nginx_ingress.yaml")
+  vars = {
+    cloud_platform = var.cloud_platform
+  }
 }
 
 
@@ -11,5 +14,5 @@ resource "helm_release" "nginx_ingress" {
   repository = "https://kubernetes.github.io/ingress-nginx/"
   namespace  = "kube-system"
 
-  values = [data.template_file.nginx_ingress.rendered]
+  values = [yamlencode(yamldecode(data.template_file.nginx_ingress.rendered))]
 }
