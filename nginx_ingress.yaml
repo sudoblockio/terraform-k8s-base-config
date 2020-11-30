@@ -8,9 +8,15 @@ controller:
       service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
   %{ endif }
   config:
-    log-format-upstream: '$remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent" "$http_x_forwarded_for" "$host" sn="$server_name" rt=$request_time pa="$proxy_protocol_addr" ua="$upstream_addr" us="$upstream_status" ut="$upstream_response_time" ul="$upstream_response_length" cs=$upstream_cache_status'
+    log-format-upstream: '$remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent" "$http_x_forwarded_for" "$host" sn="$server_name" rt=$request_time pa="$proxy_protocol_addr" ua="$upstream_addr" us="$upstream_status" ut="$upstream_response_time" ul="$upstream_response_length" cs=$upstream_cache_status rb="$request_body_json_payload"'
     use-proxy-protocol: "true"
     use-forwarded-headers: "true"
     compute-full-forwarded-for: "true"
+    location-snippet: |
+      set $request_body_json_payload '';
+      access_by_lua_block {
+        ngx.req.read_body()
+        ngx.var.request_body_json_payload = ngx.req.get_body_data()
+      }
   publishService:
     enabled: true
