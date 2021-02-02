@@ -26,10 +26,6 @@ module "this" {
 No issue is creating limit on this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Requirements
-
-No requirements.
-
 ## Providers
 
 | Name | Version |
@@ -45,7 +41,7 @@ No requirements.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+|------|-------------|------|---------|:-----:|
 | acme\_server | Full URI of the certificate issuing server | `string` | `"https://acme-v02.api.letsencrypt.org/directory"` | no |
 | all\_enabled | Bool to enable all services | `bool` | `true` | no |
 | aws\_worker\_arn | ARN for EKS worker nodes | `string` | `""` | no |
@@ -58,6 +54,7 @@ No requirements.
 | consul\_enabled | Bool to enable consul | `bool` | `true` | no |
 | do\_token | The DO API token | `string` | `""` | no |
 | external\_dns\_enabled | Bool to enable external DNS controller | `bool` | `true` | no |
+| external\_dns\_iam\_role\_arn | The IAM role arn to associate with the cluster.  Blank for creating role. | `string` | `""` | no |
 | google\_project | Name of GCP project | `string` | `""` | no |
 | google\_service\_account\_key | Contents of the JSON file for the GCP service account | `string` | `""` | no |
 | issuer\_name | k8s resource name for your certificate issuer (e.g. letsencrypt) | `string` | `"letsencrypt"` | no |

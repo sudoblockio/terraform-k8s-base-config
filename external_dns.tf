@@ -9,7 +9,7 @@ data "template_file" "external_dns" {
     google_project       = var.cloud_platform == "gcp" ? var.google_project : ""
     azure_resource_group = var.cloud_platform == "azure" ? var.azure_resource_group : ""
     do_token             = var.cloud_platform == "do" ? var.do_token : ""
-    aws_policy           = var.cloud_platform == "aws" ? aws_iam_role.external_dns[0].arn : ""
+    aws_policy           = var.cloud_platform == "aws" ? local.aws_iam_role_arn : ""
   }
 }
 

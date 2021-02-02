@@ -1,22 +1,33 @@
+variable "external_dns_iam_role_arn" {
+  description = "The IAM role arn to associate with the cluster.  Blank for creating role."
+  type        = string
+  default     = ""
+}
+
+locals {
+  //  enable_external_dns_iam = var.external_dns_iam_role_arn == "" ? true : false
+  aws_iam_role_arn = var.external_dns_iam_role_arn == "" ? join("", aws_iam_role.external_dns.*.arn) : var.external_dns_iam_role_arn
+}
+
 resource "aws_iam_role" "external_dns" {
-  count              = var.cloud_platform == "aws" ? 1 : 0
+  count              = var.cloud_platform == "aws" && var.external_dns_iam_role_arn == "" ? 1 : 0
   name               = "${random_pet.cluster.id}-external-dns"
   assume_role_policy = data.aws_iam_policy_document.assume[0].json
 }
 
 resource "aws_iam_role_policy_attachment" "external_dns" {
-  count      = var.cloud_platform == "aws" ? 1 : 0
+  count      = var.cloud_platform == "aws" && var.external_dns_iam_role_arn == "" ? 1 : 0
   policy_arn = aws_iam_policy.dns_policy[0].arn
   role       = aws_iam_role.external_dns[0].id
 }
 
 resource "aws_iam_policy" "dns_policy" {
-  count  = var.cloud_platform == "aws" ? 1 : 0
+  count  = var.cloud_platform == "aws" && var.external_dns_iam_role_arn == "" ? 1 : 0
   policy = data.aws_iam_policy_document.dns_policy[0].json
 }
 
 data "aws_iam_policy_document" "assume" {
-  count = var.cloud_platform == "aws" ? 1 : 0
+  count = var.cloud_platform == "aws" && var.external_dns_iam_role_arn == "" ? 1 : 0
 
   statement {
     actions = ["sts:AssumeRole"]
@@ -38,7 +49,7 @@ data "aws_iam_policy_document" "assume" {
 }
 
 data "aws_iam_policy_document" "dns_policy" {
-  count = var.cloud_platform == "aws" ? 1 : 0
+  count = var.cloud_platform == "aws" && var.external_dns_iam_role_arn == "" ? 1 : 0
   statement {
     actions   = ["route53:ChangeResourceRecordSets"]
     effect    = "Allow"
