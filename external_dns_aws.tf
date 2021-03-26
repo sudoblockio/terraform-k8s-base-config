@@ -1,6 +1,5 @@
 resource "aws_iam_role" "external_dns" {
   count              = var.cloud_platform == "aws" ? 1 : 0
-  name               = "${random_pet.cluster.id}-external-dns"
   assume_role_policy = data.aws_iam_policy_document.assume[0].json
 }
 
@@ -40,15 +39,27 @@ data "aws_iam_policy_document" "assume" {
 data "aws_iam_policy_document" "dns_policy" {
   count = var.cloud_platform == "aws" ? 1 : 0
   statement {
-    actions   = ["route53:ChangeResourceRecordSets"]
+    actions = [
+      "route53:ChangeResourceRecordSets",
+      "route53:ListResourceRecordSets",
+    ]
     effect    = "Allow"
     resources = ["arn:aws:route53:::hostedzone/*"]
   }
 
   statement {
-    actions = ["route53:ListHostedZones",
-    "route53:ListResourceRecordSets"]
+    actions = [
+      "route53:ListHostedZones",
+      "route53:ListResourceRecordSets",
+      "route53:ListHostedZonesByName"
+    ]
     effect    = "Allow"
     resources = ["*"]
+  }
+
+  statement {
+    actions   = ["route53:GetChange"]
+    effect    = "Allow"
+    resources = ["arn:aws:route53:::change/*"]
   }
 }

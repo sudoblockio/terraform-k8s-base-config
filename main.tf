@@ -5,7 +5,3 @@ locals {
   external_dns_enabled  = var.all_enabled ? true : var.external_dns_enabled
   nginx_ingress_enabled = var.all_enabled ? true : var.nginx_ingress_enabled
 }
-
-resource "random_pet" "cluster" {
-  length = 2
-}

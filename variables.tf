@@ -108,7 +108,7 @@ variable "do_token" {
 }
 
 variable "aws_worker_arn" {
-  description = "ARN for EKS worker nodes"
+  description = "ARN for EKS worker nodes - blank for non-aws."
   type        = string
   default     = ""
 }

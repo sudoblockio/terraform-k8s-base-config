@@ -28,7 +28,9 @@ No issue is creating limit on this module.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| terraform | >= 0.13 |
 
 ## Providers
 
@@ -39,8 +41,26 @@ No requirements.
 | kubernetes | n/a |
 | local | n/a |
 | null | n/a |
-| random | n/a |
 | template | n/a |
+
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
+| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
+| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) |
+| [helm_release](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) |
+| [kubernetes_namespace](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) |
+| [kubernetes_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret) |
+| [local_file](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) |
+| [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) |
+| [template_file](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) |
 
 ## Inputs
 
@@ -48,7 +68,7 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | acme\_server | Full URI of the certificate issuing server | `string` | `"https://acme-v02.api.letsencrypt.org/directory"` | no |
 | all\_enabled | Bool to enable all services | `bool` | `true` | no |
-| aws\_worker\_arn | ARN for EKS worker nodes | `string` | `""` | no |
+| aws\_worker\_arn | ARN for EKS worker nodes - blank for non-aws. | `string` | `""` | no |
 | azure\_resource\_group | The Azure resource group | `string` | `""` | no |
 | azure\_service\_principal\_key | Contents of the JSON file for the Azure service principal | `string` | `""` | no |
 | base\_domain\_name | The base domain name that will host the deployment. This can either be a root or a subdomain, but it should be the top-most domain to house resources. | `string` | n/a | yes |
@@ -69,7 +89,6 @@ No requirements.
 ## Outputs
 
 No output.
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Testing
