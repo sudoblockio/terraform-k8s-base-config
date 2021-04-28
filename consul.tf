@@ -1,17 +1,17 @@
-
 data "template_file" "consul" {
   template = yamlencode(yamldecode(file("${path.module}/consul.yaml")))
   vars = {
     region = var.region
+    domain = var.base_domain_name
   }
 }
 
-
 resource "helm_release" "consul" {
-  count     = local.consul_enabled ? 1 : 0
-  name      = "consul"
-  chart     = "${path.module}/charts/consul"
-  namespace = "kube-system"
+  count      = local.consul_enabled ? 1 : 0
+  name       = "consul"
+  chart      = "consul"
+  repository = "https://helm.releases.hashicorp.com"
+  namespace  = "kube-system"
 
   values = [data.template_file.consul.rendered]
 }
